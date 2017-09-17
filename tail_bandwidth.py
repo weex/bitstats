@@ -12,7 +12,7 @@ con=mysql.connector.connect(user=MYSQL_USER,
 cur=con.cursor()
 
 filename = '/var/log/bandwidth'
-seconds = 5
+seconds = INTERVAL
 ports = ['30303', '8333']
 
 f = subprocess.Popen(['tail','-F',filename],\

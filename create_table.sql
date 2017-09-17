@@ -1,0 +1,6 @@
+CREATE TABLE bandwidth (
+  id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  created TIMESTAMP,
+  metric VARCHAR(255) NOT NULL,
+  value float
+)

@@ -21,6 +21,8 @@ for d in dirs:
     out = subprocess.check_output(['ps', '-C', dirs[d], '-o', '%cpu,%mem'])
     out = out.split('\n')[1]
     cpu = out.split(' ')[0]
+    if not cpu:
+        cpu = out.split(' ')[1]
     mem = out.split(' ')[-1]
     insertstmt=("insert into proc (created, metric, value) values (now(), '%s', '%s')" % ('cpu_'+dirs[d], cpu))
     cur.execute(insertstmt)

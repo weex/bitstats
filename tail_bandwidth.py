@@ -32,6 +32,8 @@ def process():
     while True:
         if proc.poll(1):
             data = parse(f.stdout.readline())
+            if not data or 'LEN' not in data:
+                continue
             Bytes = int(data['LEN'])
             for p in ports:
                 if data.get('SPT', '') == p or data.get('DPT', '') == p:

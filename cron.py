@@ -8,7 +8,7 @@ con=mysql.connector.connect(user=MYSQL_USER,
                             database=MYSQL_DATABASE)
 cur=con.cursor()
 
-dirs = {'/home/dsterry/.ethereum': 'geth',
+dirs = {#'/home/dsterry/.ethereum': 'geth',
         '/home/dsterry/.bitcoin': 'bitcoind'}
 
 for d in dirs:

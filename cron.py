@@ -8,7 +8,7 @@ con=mysql.connector.connect(user=MYSQL_USER,
                             database=MYSQL_DATABASE)
 cur=con.cursor()
 
-dirs = {#'/home/dsterry/.ethereum': 'geth',
+dirs = {'/home/dsterry/.btcd': 'btcd',
         '/home/dsterry/.bitcoin': 'bitcoind'}
 
 for d in dirs:
@@ -18,7 +18,10 @@ for d in dirs:
     insertstmt=("insert into disk (created, metric, value) values (now(), '%s', '%s')" % ('disk_'+dirs[d], du))
     cur.execute(insertstmt)
 
-    out = subprocess.check_output(['ps', '-C', dirs[d], '-o', '%cpu,%mem'])
+    try:
+        out = subprocess.check_output(['ps', '-C', dirs[d], '-o', '%cpu,%mem'])
+    except:
+        continue
     out = out.split('\n')[1]
     cpu = out.split(' ')[0]
     if not cpu:

@@ -13,7 +13,7 @@ cur=con.cursor()
 
 filename = '/var/log/bandwidth'
 seconds = INTERVAL
-ports = ['30303', '8333']
+ports = ['30303', '8333', '8334']
 
 f = subprocess.Popen(['tail','-F',filename],\
         stdout=subprocess.PIPE,stderr=subprocess.PIPE)
